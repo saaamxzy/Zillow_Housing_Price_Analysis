@@ -52,6 +52,88 @@ app.controller('dashUserController', function($scope, $http) {
 
 });
 
+// Controller for homevalues page
+app.controller('homeValuesController', function($scope, $http) {
+  // normal variables
+  // var dummyVar1 = 'abc';
+
+  // // Angular scope variables
+  // $scope.dummyVar2 = 'abc';
+  // $scope.userList = [ { username: 'abc'}];
+
+  var req = $http.get('/homevalues/metros');
+
+  req.success(function(data) {
+    console.log('success in finding all metros.');
+    $scope.metroList = data.rows;
+  });
+
+  req.error(function(err) {
+    console.log("error: ", err);
+  });
+
+
+});
+
+app.controller('homeValuesSearchController', function($scope, $http) {
+  // normal variables
+  // var dummyVar1 = 'abc';
+
+  $scope.getPrices = function(metroID1, p_type1, metroID2, p_type2) {
+    console.log(metroID2);
+    console.log(p_type2);
+
+    var request = $http({
+      url: '/homevalues/metroprices', //+ movieId,
+      method: "POST",
+      data: {
+        'metroID1' : metroID1,
+        'p_type1' : p_type1,
+        'metroID2' : metroID2,
+        'p_type2' : p_type2
+      }
+    });
+
+    request.success(function(response) {
+      //console.log(response.rows);
+      function getFirst(e) {
+        return e[0];
+      };
+      function getSecond(e) {
+        return e[1];
+      };
+      var x = response.rows.map(getFirst);
+      var y = response.rows.map(getSecond);
+      // $scope.x = x;
+      // $scope.y = y;
+      p = document.getElementById('plot');
+      var trace1 = {
+        x, y, 
+        name: 'metro1',
+        type: 'scatter'
+      };
+      // var trace2 = {
+      //   x, y
+      // };
+      var data = [trace1];
+      var layout = { showlegend: true,
+        legend: {x:1, y:1}
+      };
+      Plotly.newPlot(p, data, layout);
+      
+      // Plotly.plot( p, [{ x, y }], {
+      //   margin: { t: 2 } 
+      // });
+      //$scope.time_stamps = response;
+    });
+
+    request.error(function(err) {
+      console.log("error: ", err);
+    });
+  }
+
+});
+
 // Controller for top movies on dashboard page
 app.controller('dashMovieController', function($scope, $http) {
 
