@@ -23,3 +23,8 @@ body {
   bottom: 5px;
   right: 5px;
 }
+
+.center_plt {
+  margin: auto;
+  width: 80%;
+}

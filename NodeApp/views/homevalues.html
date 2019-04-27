@@ -45,9 +45,8 @@
     </div>
 
     <!-- Sample Content. You can either use this or make your own -->
-    <div class="container user-container" ng-controller="homeValuesSearchController">
+    <div class="container user-container" ng-controller="homeValuesSearchController1">
       <div class="jumbotron">
-        <div class="h5">Home Values</div>
         <label>Metro 1:</label><br>
         <input type="text" class="input metroID1" placeholder="ID of metro1" ng-model="metroID1" /> <br>
         <input type="radio" name="p_type1" value="1bedroom" ng-model="p_type1"> 1 bedroom<br>
@@ -56,10 +55,12 @@
         <input type="radio" name="p_type1" value="4bedroom" ng-model="p_type1"> 4 bedrooms<br>
         <input type="radio" name="p_type1" value="condo" ng-model="p_type1"> condo<br>
         <input type="radio" name="p_type1" value="singlefamily" ng-model="p_type1"> single family home<br>
-<!--         <button type="button" class="rec-button" name="findId" ng-click="getPrices(metroID, p_type)">Find</button>
- -->
-        <br>
-        <label>Metro 1:</label><br>
+        <!-- <button type="button" class="rec-button" name="findId" ng-click="getPrices(metroID1, p_type1)">Find</button> -->
+    </div>
+    
+
+      <div class="jumbotron">
+        <label>Metro 2:</label><br>
         <input type="text" class="input metroID2" placeholder="ID of metro2" ng-model="metroID2" /> <br>
         <input type="radio" name="p_type2" value="1bedroom" ng-model="p_type2"> 1 bedroom<br>
         <input type="radio" name="p_type2" value="2bedroom" ng-model="p_type2"> 2 bedrooms<br>
@@ -67,15 +68,20 @@
         <input type="radio" name="p_type2" value="4bedroom" ng-model="p_type2"> 4 bedrooms<br>
         <input type="radio" name="p_type2" value="condo" ng-model="p_type2"> condo<br>
         <input type="radio" name="p_type2" value="singlefamily" ng-model="p_type2"> single family home<br>
-        <button type="button" class="rec-button" name="findId" ng-click="getPrices(metroID1, p_type1, metroID2, p_type2)">Find</button>
         
+      
+      <!-- <input type="submit" class="button_bottom" value="Back" onclick="window.location='/dashboard';"> -->
       </div>
-      <input type="submit" class="button_bottom" value="Back" onclick="window.location='/dashboard';">
-      <div id="plot" style="width:600px;height:250px;"></div>
+    <button type="button" class="rec-button" name="findId" ng-click="getPrices(metroID1, p_type1, metroID2, p_type2)">Plot!</button>
+
+    </div>
+
+      <!-- <div id="plot" style="width:600px;height:250px;"></div> -->
+      <div id="plot" class="center_plt" style="width:600px;height:500px;"></div>
 <!--       <script>
   
 </script> -->
-    </div>
+    
 
 
 
